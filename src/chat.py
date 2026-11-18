@@ -142,8 +142,19 @@ def answer_question(question: str, hits: list[dict], history: list[dict] | None 
             raise ChatError("Could not reach OpenRouter. Please try again shortly.") from exc
         if response.status_code == 401:
             raise ChatError("OpenRouter rejected the API key. The owner needs to check its configuration.")
-        if response.status_code in {402, 429}:
-            raise ChatError("OpenRouter's free quota or account limit was reached. Please try later; the app will not switch to a paid model.")
+        if response.status_code == 402:
+            raise ChatError("OpenRouter rejected the request because of an account credit or spending limit. Check the account balance and API-key limits in OpenRouter. No paid model was called.")
+        if response.status_code == 429:
+            # A provider can be busy even when the account still has quota.
+            # Only an explicit account-wide limit should stop free fallbacks.
+            try:
+                error = response.json().get("error", {})
+                detail = str(error.get("message", "")).lower()
+            except (ValueError, AttributeError, TypeError):
+                detail = ""
+            if any(marker in detail for marker in ("free-models-per-day", "daily quota", "daily limit", "requests per day")):
+                raise ChatError("OpenRouter's daily free quota has been reached. Wait for the daily quota to reset; changing models or redeploying will not reset it.")
+            continue
         if response.status_code in {404, 408, 502, 503, 504}:
             continue
         if not response.ok:
@@ -155,4 +166,4 @@ def answer_question(question: str, hits: list[dict], history: list[dict] | None 
             return result
         except (ValueError, KeyError, IndexError, TypeError) as exc:
             raise ChatError("OpenRouter returned an unexpected response. Please retry.") from exc
-    raise ChatError("The available free providers are temporarily unavailable. Please try again later.")
+    raise ChatError("The free models tried are busy, rate-limited, or unavailable. Please retry in a few minutes. If this persists, check OpenRouter Activity for account limits. No paid model was called.")
