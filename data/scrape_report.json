@@ -1,0 +1,96 @@
+{
+  "attempted_at": "2026-11-18T20:22:07.112227+00:00",
+  "collected": 10,
+  "events": [
+    {
+      "url": "https://darglobal.co.uk/",
+      "status": "skipped",
+      "reason": "Bot protection detected; content was not ingested."
+    },
+    {
+      "url": "https://darglobal.co.uk/projects",
+      "status": "skipped",
+      "reason": "Bot protection detected; content was not ingested."
+    },
+    {
+      "url": "https://darglobal.co.uk/trump-international-hotel-and-tower-dubai",
+      "status": "skipped",
+      "reason": "Bot protection detected; content was not ingested."
+    },
+    {
+      "url": "https://darglobal.co.uk/the-astera",
+      "status": "skipped",
+      "reason": "Bot protection detected; content was not ingested."
+    },
+    {
+      "url": "https://darglobal.co.uk/tierra-viva",
+      "status": "skipped",
+      "reason": "Bot protection detected; content was not ingested."
+    },
+    {
+      "url": "https://darglobal.co.uk/les-vagues",
+      "status": "skipped",
+      "reason": "Bot protection detected; content was not ingested."
+    },
+    {
+      "url": "https://darglobal.co.uk/landing-page/aida",
+      "status": "skipped",
+      "reason": "Bot protection detected; content was not ingested."
+    },
+    {
+      "url": "https://wasalt.com/",
+      "status": "skipped",
+      "reason": "robots.txt could not be verified; refusing automated collection from this host."
+    },
+    {
+      "url": "https://wasalt.sa/",
+      "status": "collected",
+      "characters": 4294
+    },
+    {
+      "url": "https://wasalt.sa/شقق-للبيع-في-الرياض",
+      "status": "collected",
+      "characters": 2949
+    },
+    {
+      "url": "https://wasalt.sa/فلل-للبيع-في-الرياض",
+      "status": "collected",
+      "characters": 3341
+    },
+    {
+      "url": "https://wasalt.sa/فلل-للبيع-في-جدة",
+      "status": "collected",
+      "characters": 2674
+    },
+    {
+      "url": "https://wasalt.sa/شقق-للبيع-في-جدة",
+      "status": "collected",
+      "characters": 2113
+    },
+    {
+      "url": "https://wasalt.sa/شقق-للبيع-في-مكة",
+      "status": "collected",
+      "characters": 2041
+    },
+    {
+      "url": "https://wasalt.sa/شقق-للبيع-في-المدينة",
+      "status": "collected",
+      "characters": 2422
+    },
+    {
+      "url": "https://wasalt.sa/property/sale/شقة-1590-متر-مربع-بغرفتين-5893390",
+      "status": "collected",
+      "characters": 4359
+    },
+    {
+      "url": "https://wasalt.sa/فلل-للبيع-في-مكة",
+      "status": "collected",
+      "characters": 2685
+    },
+    {
+      "url": "https://wasalt.sa/فلل-للبيع-في-المدينة",
+      "status": "collected",
+      "characters": 2474
+    }
+  ]
+}

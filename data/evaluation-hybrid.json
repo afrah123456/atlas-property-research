@@ -1,0 +1,130 @@
+{
+  "mode": "hybrid",
+  "source_pages": 16,
+  "chunks": 67,
+  "queries": 12,
+  "hit_at_3": 1.0,
+  "llm_evaluated": false,
+  "cases": [
+    {
+      "question": "What amenities does The Astera offer?",
+      "expected_title_contains": "The Astera",
+      "top_titles": [
+        "The Astera, Interiors by Aston Martin",
+        "The Astera, Interiors by Aston Martin",
+        "AIDA gated coastal community"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "Where is Tierra Viva located?",
+      "expected_title_contains": "Tierra Viva",
+      "top_titles": [
+        "Tierra Viva, design inspired by Automobili Lamborghini",
+        "Tierra Viva, design inspired by Automobili Lamborghini",
+        "Les Vagues by Elie Saab"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "Tell me about Elie Saab residences in Qatar",
+      "expected_title_contains": "Les Vagues",
+      "top_titles": [
+        "Les Vagues by Elie Saab",
+        "Les Vagues by Elie Saab",
+        "Apartments for sale in Riyadh — collected listings"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "Where is AIDA in Oman?",
+      "expected_title_contains": "AIDA",
+      "top_titles": [
+        "AIDA gated coastal community",
+        "AIDA gated coastal community",
+        "Les Vagues by Elie Saab"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "Trump tower Dubai handover and amenities",
+      "expected_title_contains": "Trump International",
+      "top_titles": [
+        "Trump International Hotel & Tower Dubai",
+        "Trump International Hotel & Tower Dubai",
+        "The Astera, Interiors by Aston Martin"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "Wasalt apartments in Jeddah",
+      "expected_title_contains": "Apartments for sale in Jeddah",
+      "top_titles": [
+        "Apartments for sale in Jeddah — collected listings",
+        "Apartments for sale in Jeddah — collected listings",
+        "Villas for sale in Jeddah — collected listings"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "Wasalt villas in Riyadh",
+      "expected_title_contains": "Villas for sale in Riyadh",
+      "top_titles": [
+        "Villas for sale in Riyadh — collected listings",
+        "Villas for sale in Riyadh — collected listings",
+        "Apartments for sale in Riyadh — collected listings"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "Wasalt apartments in Makkah",
+      "expected_title_contains": "Apartments for sale in Makkah",
+      "top_titles": [
+        "Apartments for sale in Makkah — collected listings",
+        "Apartments for sale in Makkah — collected listings",
+        "Villas for sale in Makkah — collected listings"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "Wasalt apartments in Madinah",
+      "expected_title_contains": "Apartments for sale in Madinah",
+      "top_titles": [
+        "Apartments for sale in Madinah — collected listings",
+        "Apartments for sale in Madinah — collected listings",
+        "Villas for sale in Madinah — collected listings"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "شقق للبيع في جدة",
+      "expected_title_contains": "Apartments for sale in Jeddah",
+      "top_titles": [
+        "Apartments for sale in Jeddah — collected listings",
+        "Villas for sale in Jeddah — collected listings",
+        "Apartments for sale in Jeddah — collected listings"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "أين يقع مشروع أيدا؟",
+      "expected_title_contains": "AIDA",
+      "top_titles": [
+        "AIDA gated coastal community",
+        "AIDA gated coastal community",
+        "Les Vagues by Elie Saab"
+      ],
+      "hit_at_3": true
+    },
+    {
+      "question": "What is the price of listing 5893390?",
+      "expected_title_contains": "5893390",
+      "top_titles": [
+        "Wasalt property listing 5893390 · شقة 1590 متر مربع بغرفتين للبيع",
+        "Wasalt property listing 5893390 · شقة 1590 متر مربع بغرفتين للبيع",
+        "Villas for sale in Madinah — collected listings"
+      ],
+      "hit_at_3": true
+    }
+  ]
+}
