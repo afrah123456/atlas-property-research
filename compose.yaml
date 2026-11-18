@@ -1,0 +1,10 @@
+services:
+  atlas:
+    build: .
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    environment:
+      RETRIEVAL_MODE: hybrid
+    restart: unless-stopped

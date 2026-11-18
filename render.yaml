@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: atlas-property-research
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: RETRIEVAL_MODE
+        value: hybrid
+      - key: EMBEDDING_THREADS
+        value: "1"
+      - key: MAX_REQUESTS_PER_HOUR
+        value: "40"

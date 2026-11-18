@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+!.env.example
+.venv
+.cache
+.runtime
+__pycache__
+.pytest_cache
+.streamlit/secrets.toml
+data/model-cache
+data/index
+tests
+deployment.json
