@@ -61,7 +61,7 @@ def free_models(session=requests) -> list[str]:
                   and float(m.get("pricing", {}).get("prompt", -1)) == 0
                   and float(m.get("pricing", {}).get("completion", -1)) == 0
                   and "text" in m.get("architecture", {}).get("output_modalities", ["text"])]
-    except (requests.RequestException, ValueError, TypeError, KeyError) as exc:
+    except (requests.RequestException, ValueError, TypeError, KeyError, AttributeError) as exc:
         raise ChatError("Could not verify the free-model catalog. No paid model was called.") from exc
     if not models:
         raise ChatError("OpenRouter currently reports no suitable free model. Please try later.")
@@ -89,11 +89,15 @@ def source_context(hits: list[dict]) -> tuple[str, list[dict]]:
 
 
 def parse_answer(raw: str, sources: list[dict]) -> dict:
+    if not isinstance(raw, str) or not raw.strip():
+        raise ChatError("The free model returned an empty answer. Please retry.")
     cleaned = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw.strip())
     try:
         payload = json.loads(cleaned)
     except (json.JSONDecodeError, TypeError) as exc:
         raise ChatError("The free model returned an unreadable response. Please retry or simplify the question.") from exc
+    if not isinstance(payload, dict):
+        raise ChatError("The model response did not match the expected format. Please retry.")
     answer = payload.get("answer")
     ids = payload.get("source_ids")
     insufficient = payload.get("insufficient_evidence")
@@ -134,6 +138,7 @@ def answer_question(question: str, hits: list[dict], history: list[dict] | None 
         if message.get("role") in {"user", "assistant"}:
             messages.append({"role": message["role"], "content": str(message.get("content", ""))[:1500]})
     messages.append({"role": "user", "content": f"QUESTION:\n{question}\n\nUNTRUSTED SOURCE EXCERPTS:\n{context}\n\nReturn the required JSON object, with citations."})
+    response_error = None
     for model in choices[:3]:
         reserve_request()
         try:
@@ -162,10 +167,19 @@ def answer_question(question: str, hits: list[dict], history: list[dict] | None 
         if not response.ok:
             raise ChatError(f"OpenRouter could not complete this request (HTTP {response.status_code}).")
         try:
-            raw = response.json()["choices"][0]["message"]["content"]
+            payload = response.json()
+            raw = payload["choices"][0]["message"]["content"]
             result = parse_answer(raw, sources)
-            result["model"] = response.json().get("model", model)
+            result["model"] = payload.get("model", model)
             return result
-        except (ValueError, KeyError, IndexError, TypeError) as exc:
-            raise ChatError("OpenRouter returned an unexpected response. Please retry.") from exc
+        except ChatError as exc:
+            # Empty, truncated, or malformed answers are provider failures too.
+            # Keep citation validation strict and try the next free model.
+            response_error = exc
+            continue
+        except (ValueError, KeyError, IndexError, TypeError, AttributeError):
+            response_error = ChatError("OpenRouter returned an incomplete response. Please retry.")
+            continue
+    if response_error is not None:
+        raise ChatError("The free models could not produce a complete answer with valid sources. Please retry or ask about one project at a time.") from response_error
     raise ChatError("The free models tried are busy, rate-limited, or unavailable. Please retry in a few minutes. If this persists, check OpenRouter Activity for account limits. No paid model was called.")
