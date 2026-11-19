@@ -118,22 +118,6 @@ python scripts/scrape.py --max-pages 20 --merge
 
 The scraper checks robots rules, records blocked pages and does not bypass access controls. It also supports importing authorized saved HTML pages.
 
-## Testing
-
-```bash
-python -m pytest -q
-python scripts/evaluate.py --mode hybrid
-```
-
-Development results:
-
-- **23 automated tests passed.**
-- Retrieval found the expected source within the top three results for **12 of 12 development questions**.
-
-The retrieval questions were also used to improve the system, so these results are not an independent accuracy benchmark.
-
-Real AI responses, Docker execution and public deployment still need end-to-end verification. See [EVALUATION.md](EVALUATION.md) for the checklist.
-
 ## Limitations and Privacy
 
 - The chatbot covers only the collected pages.
