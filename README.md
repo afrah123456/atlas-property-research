@@ -6,7 +6,7 @@ app_port: 7860
 
 # Atlas Property Research
 
-A real-estate chatbot built for the DarGlobal Junior AI Engineer assignment. It answers questions using information collected from **DarGlobal** and **Wasalt**, with links to the sources.
+A real-estate chatbot built for the DarGlobal Junior AI Engineer assignment. It answers questions using information collected from DarGlobal and Wasalt, with links to the sources.
 
 ## Features
 
@@ -24,7 +24,7 @@ A real-estate chatbot built for the DarGlobal Junior AI Engineer assignment. It 
 4. Send those sections to an OpenRouter model.
 5. Display the answer with source references.
 
-This approach is called **Retrieval-Augmented Generation (RAG)**. The app searches existing information to help the model answer; it does not train a new model.
+This approach is called Retrieval-Augmented Generation (RAG). The app searches existing information to help the model answer; it does not train a new model.
 
 ## Technology
 
@@ -96,19 +96,6 @@ docker run --rm -p 7860:7860 --env-file .env atlas-property-research
 
 Open **http://localhost:7860**.
 
-## Deploy on Render
-
-1. Upload the project files to GitHub.
-2. Create a **Web Service** in Render.
-3. Connect the GitHub repository.
-4. Select **Docker** as the runtime.
-5. Select the **Free** instance type.
-6. Add `OPENROUTER_API_KEY` in Render's environment settings.
-7. Deploy and test the public URL provided by Render.
-
-See [DEPLOY-RENDER.md](DEPLOY-RENDER.md) for detailed instructions.
-
-Free hosting may sleep when idle, so the first visit can take longer.
 
 ## Refresh the Data
 
